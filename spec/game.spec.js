@@ -52,6 +52,13 @@ describe('Game', function(){
       winningGame.board = [1,1,1,0,0,0,0,0,0];
       expect(winningGame.checkWinner()).toEqual("Player One wins!");
     });
+
+    it('should check to see if players tied', function(){
+      var tiedGame = new Game();
+      tiedGame.board = [1,1,-1,-1,-1,1,1,-1,1];
+      tiedGame.totalMoves = 9;
+      expect(tiedGame.checkWinner()).toEqual("You tied!");
+    });
   });
 
   // describe()

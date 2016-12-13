@@ -39,6 +39,10 @@ Game.prototype.checkWinner = function(){
       return "Player Two wins!";
     }
   }
+
+  if (this.totalMoves === 9){
+    return "You tied!";
+  }
 };
 
 Game.prototype.makeMove = function(location){
