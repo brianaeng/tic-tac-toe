@@ -8,5 +8,5 @@ var Game = function(){
 
 
 
-module.exports = Game;
-module.exports = Board;
+export default Game; // this is how it is exported with webpack
+//module.exports = Board;
