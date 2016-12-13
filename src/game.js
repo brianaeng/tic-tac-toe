@@ -12,7 +12,7 @@ var Game = function(){
 
 Game.prototype.setFirstPlayer = function(){
   var coinSides = ["HEADS", "TAILS"];
-  return coinSides[Math.floor(Math.random()*2)] + "is Player One and you are X. Player Two is O.";
+  return coinSides[Math.floor(Math.random()*2)] + " is Player One and you are X. Player Two is O.";
 };
 
 Game.prototype.checkWinner = function(){
@@ -27,22 +27,26 @@ Game.prototype.checkWinner = function(){
     [this.board[6], this.board[4], this.board[2]]
   ];
 
+  var result = null;
+
   for (var i = 0; i < winningMoves.length; i++) {
     var sum = winningMoves[i].reduce(function(a, b) {
       return a + b;
     }, 0);
 
     if (sum === 3) {
-      return "Player One wins!";
+      result = "Player One wins!";
     }
     else if (sum === -3) {
-      return "Player Two wins!";
+      result = "Player Two wins!";
     }
   }
 
   if (this.totalMoves === 9){
-    return "You tied!";
+    result =  "You tied!";
   }
+
+  return result;
 };
 
 Game.prototype.makeMove = function(location){
@@ -58,8 +62,13 @@ Game.prototype.makeMove = function(location){
       this.board[location] = -1;
     } //When move is even (Player 2)
   }
-  this.checkWinner();
-  return this.board;
+
+  if (this.checkWinner() === null){
+    return this.board;
+  }
+  else {
+    return this.checkWinner();
+  }
 };
 
 
