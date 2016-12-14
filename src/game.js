@@ -5,11 +5,6 @@ var Game = function(){
   this.totalMoves = 0;
 };
 
-// Game.prototype.setFirstPlayer = function(){
-//   var players = [this.playerOne, this.playerTwo];
-//   return players[Math.floor(Math.random()*2)];
-// };
-
 Game.prototype.setFirstPlayer = function(){
   var coinSides = ["HEADS", "TAILS"];
   return coinSides[Math.floor(Math.random()*2)] + " is Player One and you are X. Player Two is O.";

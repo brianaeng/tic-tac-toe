@@ -73,7 +73,5 @@ describe('Game', function(){
     });
   });
 
-  // describe()
-
 
 }); // end of Game describe
