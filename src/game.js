@@ -50,7 +50,10 @@ Game.prototype.checkWinner = function(){
 };
 
 Game.prototype.makeMove = function(location){
-  if (this.board[location] !== 0){
+  if (location > 8 || location < 0){
+    throw "This is not a spot on the board.";
+  }
+  else if (this.board[location] !== 0){
     throw "This spot is already taken.";
   }
   else {

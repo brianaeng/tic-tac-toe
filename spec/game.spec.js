@@ -44,13 +44,25 @@ describe('Game', function(){
         gameTest.makeMove(0);
       }).toThrow("This spot is already taken.");
     });
+
+    it('should not allow a player to choose a spot not on the board', function(){
+      expect(function() {
+        gameTest.makeMove(1000);
+      }).toThrow("This is not a spot on the board.");
+    });
   });
 
   describe('checkWinner', function(){
-    it('should check to see if a player won', function(){
-      var winningGame = new Game();
-      winningGame.board = [1,1,1,0,0,0,0,0,0];
-      expect(winningGame.checkWinner()).toEqual("Player One wins!");
+    it('should check to see if a player won (player 1 should win)', function(){
+      var winningGameOne = new Game();
+      winningGameOne.board = [1,1,1,0,0,0,0,0,0];
+      expect(winningGameOne.checkWinner()).toEqual("Player One wins!");
+    });
+
+    it('should check to see if a player won (player 2 should win)', function(){
+      var winningGameTwo = new Game();
+      winningGameTwo.board = [-1,-1,-1,0,0,0,0,0,0];
+      expect(winningGameTwo.checkWinner()).toEqual("Player Two wins!");
     });
 
     it('should check to see if players tied', function(){
