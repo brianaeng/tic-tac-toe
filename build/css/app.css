@@ -1,0 +1,53 @@
+body {
+  width: 80%;
+  margin: 3rem auto;
+  text-align: center;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+#welcome {
+  margin: 1rem auto;
+  height: 10rem;
+  width: 30rem;
+  background-color: grey;
+}
+
+.board table {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 5rem;
+}
+
+.spot {
+  width: 8rem;
+  height: 8rem;
+  font-weight: bold;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/*td:hover {
+  background-color: red;
+}*/
+
+.open:hover:after {
+  content: "X"; /*make it hover the next move? $(".open").css("content","VARIABLE_STORING_X_OR_O"); */
+}
+
+#space-1, #space-4, #space-7 {
+  border-right: 5px black solid;
+}
+
+#space-3, #space-6, #space-9 {
+  border-left: 5px black solid;
+}
+
+#row-1, #row-2 {
+  border-bottom: 5px black solid;
+}
