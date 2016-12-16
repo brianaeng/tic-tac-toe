@@ -50,12 +50,11 @@ This might seem like an unwarranted distraction from diving right into the code 
 #### User Stories
 For this project you'll need to create your own users stories as a pair, based on your understanding of the Tic-Tac-Toe. For some examples on how user stories work, check out the [project requirements from bEtsy](https://github.com/AdaGold/betsy#user-stories).
 
-Some things to keep in mind:
-- Any constructor functions you create should not take any arguments. This is only to minimize the work needed to later convert your code into a Backbone Model.
+#### Suggestions
 - Some of your stories will likely map 1-to-1 to individual functions, while others might describe certain aspects of how a single function should behave.
-- Because the code you're writing for wave one is the "business logic" of a Tic-Tac-Toe game, the human users of your application will not be interacting with it directly. Instead, the "users" you're writing these stories for will be other code in your project -- Jasmine tests or Backbone Views.
-
-To keep things simple, your code should live in a single JavaScript file (e.g. `src/game.js`). For the first wave you should implement the Tic-Tac-Toe game with the "object-oriented" style used for the [Scrabble](https://github.com/AdaGold/js-scrabble) project.
+- Because the code you're writing for wave one is the "business logic" of a Tic-Tac-Toe game, the human users of your application will not be interacting with it directly. Instead, the "users" you're writing stories for will be other code in your project -- Jasmine tests or Backbone Views.
+- For the first wave you should implement the Tic-Tac-Toe game with the "object-oriented" style used for the [Scrabble](https://github.com/AdaGold/js-scrabble) project.
+- Any constructor functions you create should not take arguments. This is only to minimize the work needed to later convert your code into a Backbone Model.
 
 #### Testing Requirements
 You should strive to follow the BDD approach when building this application. Whenever you decide that a new function is necessary to implement one or another feature, you should begin by writing tests for that function.
@@ -65,12 +64,29 @@ You should strive to follow the BDD approach when building this application. Whe
 - We don't have any code coverage tool setup for this project, but if you have every function tested then it should be essentially 100%
 
 ### Wave Two:
-In this wave you will convert your existing Tic-Tac-Toe game code into a Backbone Model and create a Backbone View for rendering and interacting with that model.
+In this wave, we will design the framework of our Backbone application. Then, using this framework we create for ourselves, we will begin by implementing the front-end of our Tic-Tac-Toe game using Backbone Views.
 
-#### Converting to Backbone Model
-More details forthcoming
+#### Scope
+We will not be completing the entire implementation of the Tic-Tac-Toe game in this wave. These are the requirements for what you should complete in this wave:
+
+1. Complete the _design_ (on paper, whiteboard and/or Trello) for **all** components in your Backbone game implementation  
+1. Create "stub" files and folders for all of these components in your application  
+1. Design the **user interface** for your Tic-Tac-Toe game (on paper, whiteboard and/or Trello)  
+1. Implement the user interface for your game in your application, using templates, "regular" HTML and CSS  
+1. Implement the framework for handling the **DOM Events** that your front-end will interact with. Note: By "framework" here, we mean determine what those DOM Events are and creating function "stubs" that will handle the actions that correspond with these events in the next wave.  
+
+Note: Don't start on the JS object to Model conversion until Wave three!
+
+#### Testing Requirements
+No additional requirements for this wave
 
 ### Wave Three:
+In this wave we will be taking the code we wrote in Wave One for the Tic-Tac-Toe game using plain JavaScript and converting this into Backbone Models. We will integrate these models with the rest of the Backbone application we created in Wave Two.
+
+### Converting to Backbone Model
+More details forthcoming
+
+### Wave Four:
 In this wave you'll connect the Backbone web application you created in the previous wave to an existing Rails API that has standard RESTful CRUD routes.
 
 - Read the documentation for the [Tic-Tac-Toe API](https://github.com/Ada-c6/tic-tac-toe-api)
