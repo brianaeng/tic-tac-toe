@@ -38,6 +38,7 @@ table {
 
 .open:hover:after {
   content: "X"; /*make it hover the next move? $(".open").css("content","VARIABLE_STORING_X_OR_O"); */
+  opacity: .5;
 }
 
 #space-1, #space-4, #space-7 {
