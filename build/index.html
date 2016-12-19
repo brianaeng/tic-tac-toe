@@ -9,29 +9,39 @@
   <body>
     <script src="/app.bundle.js" charset="utf-8"></script>
     <h1>Tic-Tac-Toe</h1>
-    <!-- <section id="welcome">
-      <p>
-        Test
-      </p>
-    </section> -->
+
+    <section id="welcome">
+      <button class="close">X</button>
+      <p>Between the two of you, choose who's heads and who's tails. Then click to flip the coin.</p>
+      <button class="coin-flip">Flip Coin!</button>
+      <div class="result-popup">
+        <p class="flip-result"></p>
+      </div>
+    </section>
+
+    <section class="error">
+      <p class="error-text"></p>
+    </section>
+
     <section class="board">
       <table>
         <tr id="row-1">
-          <td class="spot" id="space-1">X</td>
-          <td class="spot" id="space-2">O</td>
-          <td class="spot" id="space-3">X</td>
+          <td class="spot open" chosenIcon="X" id="space-0"></td>
+          <td class="spot open" chosenIcon="X" id="space-1"></td>
+          <td class="spot open" chosenIcon="X" id="space-2"></td>
         </tr>
         <tr id="row-2">
-          <td class="spot open" id="space-4"> </td>
-          <td class="spot open" id="space-5"> </td>
-          <td class="spot open" id="space-6"> </td>
+          <td class="spot open" chosenIcon="X" id="space-3"> </td>
+          <td class="spot open" chosenIcon="X" id="space-4"> </td>
+          <td class="spot open" chosenIcon="X" id="space-5"> </td>
         </tr>
         <tr id="row-3">
-          <td class="spot open" id="space-7"></td>
-          <td class="spot open" id="space-8"></td>
-          <td class="spot open" id="space-9"></td>
+          <td class="spot open" chosenIcon="X" id="space-6"></td>
+          <td class="spot open" chosenIcon="X" id="space-7"></td>
+          <td class="spot open" chosenIcon="X" id="space-8"></td>
         </tr>
       </table>
     </section>
+
   </body>
 </html>

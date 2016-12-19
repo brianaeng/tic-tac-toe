@@ -16,6 +16,10 @@ h1 {
   background-color: grey;
 }
 
+.result-popup, .close, .error {
+  display: none;
+}
+
 .board table {
   margin: 0 auto;
   text-align: center;
@@ -32,20 +36,16 @@ table {
   border-collapse: collapse;
 }
 
-/*td:hover {
-  background-color: red;
-}*/
-
 .open:hover:after {
-  content: "X"; /*make it hover the next move? $(".open").css("content","VARIABLE_STORING_X_OR_O"); */
+  content: attr(chosenIcon); /*make it hover the next move? $(".open").css("content","VARIABLE_STORING_X_OR_O"); */
   opacity: .5;
 }
 
-#space-1, #space-4, #space-7 {
+#space-0, #space-3, #space-6 {
   border-right: 5px black solid;
 }
 
-#space-3, #space-6, #space-9 {
+#space-2, #space-5, #space-8 {
   border-left: 5px black solid;
 }
 

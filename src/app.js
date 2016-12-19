@@ -1,13 +1,16 @@
 import GameView from 'app/views/game_view';
+import Game from 'app/models/game';
 import $ from 'jquery';
 import _ from 'underscore';
 import Backbone from 'backbone';
 
 $(document).ready(function() {
+  var game = new Game({});
 
-  var game = new GameView({
-    el: $('body')
+  var newGame = new GameView({
+    el: $('body'),
+    model: game
   });
 
-  game.render();
+  newGame.render();
 });
