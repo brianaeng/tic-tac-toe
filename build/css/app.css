@@ -25,6 +25,19 @@ h1 {
   display: none;
 }
 
+#welcome {
+  padding: 1rem 2rem;
+}
+
+.result-popup {
+  padding: 2.5rem;
+}
+
+.close {
+  float: right;
+  margin: 1rem;
+}
+
 .board table {
   margin: 0 auto;
   text-align: center;
