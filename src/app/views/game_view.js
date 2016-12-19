@@ -20,9 +20,10 @@ const GameView = Backbone.View.extend({
     'click .close': 'closeCoinFlip'
   },
   setFirstPlayer: function(){
+    $(".coin-flip, .intro").hide();
     console.log("in setFirstPlayer");
     var coinSides = ["HEADS", "TAILS"];
-    $(".flip-result").html(coinSides[Math.floor(Math.random()*2)] + " is Player One and you are X. Player Two is O.");
+    $(".flip-result").html(coinSides[Math.floor(Math.random()*2)] + " wins! They are Player One and X. Player Two is O.");
     $(".result-popup").show();
     $(".close").show();
   },
@@ -44,39 +45,39 @@ const GameView = Backbone.View.extend({
       }
     }
   },
-  // checkWinner: function(){
-  //    var winningMoves = [
-  //     [this.board[0], this.board[1], this.board[2]],
-  //     [this.board[3], this.board[4], this.board[5]],
-  //     [this.board[6], this.board[7], this.board[8]],
-  //     [this.board[0], this.board[3], this.board[6]],
-  //     [this.board[1], this.board[4], this.board[7]],
-  //     [this.board[2], this.board[5], this.board[8]],
-  //     [this.board[0], this.board[4], this.board[8]],
-  //     [this.board[6], this.board[4], this.board[2]]
-  //   ];
-  //
-  //   var result = null;
-  //
-  //   for (var i = 0; i < winningMoves.length; i++) {
-  //     var sum = winningMoves[i].reduce(function(a, b) {
-  //       return a + b;
-  //     }, 0);
-  //
-  //     if (sum === 3) {
-  //       result = "Player One wins!";
-  //     }
-  //     else if (sum === -3) {
-  //       result = "Player Two wins!";
-  //     }
-  //   }
-  //
-  //   if (this.totalMoves === 9){
-  //     result =  "You tied!";
-  //   }
-  //
-  //   return result;
-  // },
+  checkWinner: function(){
+     var winningMoves = [
+      [this.model.get("board")[0], this.model.get("board")[1], this.model.get("board")[2]],
+      [this.model.get("board")[3], this.model.get("board")[4], this.model.get("board")[5]],
+      [this.model.get("board")[6], this.model.get("board")[7], this.model.get("board")[8]],
+      [this.model.get("board")[0], this.model.get("board")[3], this.model.get("board")[6]],
+      [this.model.get("board")[1], this.model.get("board")[4], this.model.get("board")[7]],
+      [this.model.get("board")[2], this.model.get("board")[5], this.model.get("board")[8]],
+      [this.model.get("board")[0], this.model.get("board")[4], this.model.get("board")[8]],
+      [this.model.get("board")[6], this.model.get("board")[4], this.model.get("board")[2]]
+    ];
+
+    var result = null;
+
+    for (var i = 0; i < winningMoves.length; i++) {
+      var sum = winningMoves[i].reduce(function(a, b) {
+        return a + b;
+      }, 0);
+
+      if (sum === 3) {
+        result = "Player One wins!";
+      }
+      else if (sum === -3) {
+        result = "Player Two wins!";
+      }
+    }
+
+    if (this.model.get("totalMoves") === 9){
+      result =  "It's a tie!";
+    }
+
+    return result;
+  },
   makeMove: function(e){
     //This should fill the spot in the initialized board array, fill the spot on the board (html), remove the .open class (since spot is now taken), and change the .open:hover:after "content" to the next player icon (aka if X turn to O and if O turn to X)
     console.log(e.target);
@@ -84,11 +85,14 @@ const GameView = Backbone.View.extend({
     var location = parseInt(target.charAt(target.length - 1));
     console.log("clicked spot " + location);
 
+    //These two errors seem unnecessary?
     if (location > 8 || location < 0){
-      throw "This is not a spot on the board.";
+      $(".error").html("This is not a spot on the board.");
+      $(".error").show();
     }
     else if (this.model.get("board")[location] !== 0){
-      throw "This spot is already taken.";
+      $(".error").html("This spot is already taken.");
+      $(".error").show();
     }
     else {
       this.model.set("totalMoves", this.model.get("totalMoves") + 1);
@@ -112,12 +116,12 @@ const GameView = Backbone.View.extend({
 
     $(e.target).removeClass("open");
     this.updateBoard();
-    // if (this.checkWinner() === null){
-    //   return this.model.get("board");
-    // }
-    // else {
-    //   return this.checkWinner();
-    // }
+
+    var checkEnd = this.checkWinner();
+    if (checkEnd !== null){
+      $(".game-result").html(checkEnd);
+      $(".end-game").show();
+    }
   }
 });
 

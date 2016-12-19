@@ -7,16 +7,21 @@ body {
 
 h1 {
   font-size: 5rem;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
+.button, td {
+  font-family: 'Julius Sans One', sans-serif;
 }
 
 #welcome {
   margin: 1rem auto;
   height: 10rem;
   width: 30rem;
-  background-color: grey;
+  background-color: rgb(209, 209, 209);
 }
 
-.result-popup, .close, .error {
+.result-popup, .close, .error, .end-game {
   display: none;
 }
 

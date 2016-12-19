@@ -3,6 +3,7 @@
   <head>
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
   </head>
@@ -11,9 +12,9 @@
     <h1>Tic-Tac-Toe</h1>
 
     <section id="welcome">
-      <button class="close">X</button>
-      <p>Between the two of you, choose who's heads and who's tails. Then click to flip the coin.</p>
-      <button class="coin-flip">Flip Coin!</button>
+      <button type="button" class="close button">X</button>
+      <p class="intro">Between the two of you, choose who's heads and who's tails. Then click to flip the coin.</p>
+      <button type="button" class="coin-flip button">Flip Coin!</button>
       <div class="result-popup">
         <p class="flip-result"></p>
       </div>
@@ -21,6 +22,10 @@
 
     <section class="error">
       <p class="error-text"></p>
+    </section>
+
+    <section class="end-game">
+      <p class="game-result"></p>
     </section>
 
     <section class="board">

@@ -46,14 +46,10 @@ Game.prototype.checkWinner = function(){
 
 Game.prototype.makeMove = function(location){
   if (location > 8 || location < 0){
-    $(".error").html("This is not a spot on the board.");
-    $(".error").show();
-    // throw "This is not a spot on the board.";
+    throw "This is not a spot on the board.";
   }
   else if (this.board[location] !== 0){
-    $(".error").html("This spot is already taken.");
-    $(".error").show();
-    // throw "This spot is already taken.";
+    throw "This spot is already taken.";
   }
   else {
     $(".error").hide();
