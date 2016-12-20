@@ -92,34 +92,23 @@ const GameView = Backbone.View.extend({
     var location = parseInt(target.charAt(target.length - 1));
     console.log("clicked spot " + location);
 
-    //These two errors seem unnecessary?
-    // if (location > 8 || location < 0){
-    //   this.$(".error").html("This is not a spot on the board.");
-    //   this.$(".error").show();
-    // }
-    // else if (this.model.get("board")[location] !== 0){
-    //   this.$(".error").html("This spot is already taken.");
-    //   this.$(".error").show();
-    // }
-    //else {
-      this.model.set("totalMoves", this.model.get("totalMoves") + 1);
-      console.log("total moves = " + this.model.get("totalMoves"));
-      if (this.model.get("totalMoves") % 2 !== 0){
-        var newBoardX = this.model.get("board");
-        newBoardX[location] = 1;
-        // console.log("see if new board works: " + newBoard);
-        this.model.set("board", newBoardX);
-        console.log("changed to 1 - board: " + this.model.get("board"));
-        this.$(".open").attr('chosenIcon', "O");
-      }
-      else {
-        var newBoardO = this.model.get("board");
-        newBoardO[location] = -1;
-        this.model.set("board", newBoardO);
-        console.log("changed to -1 - board: " + this.model.get("board"));
-        this.$(".open").attr('chosenIcon', "X");
-      }
-    //}
+    this.model.set("totalMoves", this.model.get("totalMoves") + 1);
+    console.log("total moves = " + this.model.get("totalMoves"));
+    if (this.model.get("totalMoves") % 2 !== 0){
+      var newBoardX = this.model.get("board");
+      newBoardX[location] = 1;
+      // console.log("see if new board works: " + newBoard);
+      this.model.set("board", newBoardX);
+      console.log("changed to 1 - board: " + this.model.get("board"));
+      this.$(".open").attr('chosenIcon', "O");
+    }
+    else {
+      var newBoardO = this.model.get("board");
+      newBoardO[location] = -1;
+      this.model.set("board", newBoardO);
+      console.log("changed to -1 - board: " + this.model.get("board"));
+      this.$(".open").attr('chosenIcon', "X");
+    }
 
     this.$(e.target).removeClass("open");
     this.updateBoard();
