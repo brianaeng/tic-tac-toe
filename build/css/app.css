@@ -1,3 +1,4 @@
+/* -- EVERYTHING --*/
 body {
   width: 80%;
   margin: 3rem auto;
@@ -14,28 +15,33 @@ h1 {
   font-family: 'Julius Sans One', sans-serif;
 }
 
-#welcome {
-  margin: 1rem auto;
-  height: 10rem;
-  width: 30rem;
-  background-color: rgb(209, 209, 209);
-}
-
-.result-popup, .close, .error, .end-game {
+.result-popup, .close, .error, .end-game, .board {
   display: none;
 }
 
+/* -- COIN FLIP --*/
 #welcome {
-  padding: 1rem 2rem;
+  margin: 2rem auto;
+  padding: 2rem 2rem;
+  width: 60%;
+  background-color: rgb(223, 223, 223);
 }
 
-.result-popup {
-  padding: 2.5rem;
+.coin-flip, .close, .intro, .flip-result {
+  margin: .5rem;
 }
 
-.close {
-  float: right;
-  margin: 1rem;
+button.coin-flip, button.close {
+  background-color: rgb(97, 97, 97);
+}
+
+button.coin-flip:hover, button.coin-flip:focus, button.close:hover, button.close:focus {
+  background-color: rgb(154, 154, 154);
+}
+
+/* -- TIC TAC TOE BOARD --*/
+.board {
+  margin: 2rem 0;
 }
 
 .board table {
@@ -55,7 +61,7 @@ table {
 }
 
 .open:hover:after {
-  content: attr(chosenIcon); /*make it hover the next move? $(".open").css("content","VARIABLE_STORING_X_OR_O"); */
+  content: attr(chosenIcon);
   opacity: .5;
 }
 
@@ -69,4 +75,11 @@ table {
 
 #row-1, #row-2 {
   border-bottom: 5px black solid;
+}
+
+/* -- GAME RESULT --*/
+.game-result {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(163, 18, 18);
 }

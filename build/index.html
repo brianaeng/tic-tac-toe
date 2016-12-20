@@ -10,27 +10,18 @@
   <body>
     <h1>Tic-Tac-Toe</h1>
 
-    <a href="#" data-open="myModal">Click Me For A Modal</a>
-
-    <div id="myModal" class="reveal" data-reveal >
-      <h2 id="modalTitle">Awesome. I have it.</h2>
-      <p class="lead">Your couch.  It is mine.</p>
-      <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-      <a class="close-button" data-close>&#215;</a>
-    </div>
-
     <section id="welcome">
-      <button type="button" class="close button">X</button>
       <p class="intro">Between the two of you, choose who's heads and who's tails. Then click to flip the coin.</p>
       <button type="button" class="coin-flip button">Flip Coin!</button>
       <div class="result-popup">
         <p class="flip-result"></p>
+        <button type="button" class="close button">close</button>
       </div>
     </section>
 
-    <section class="error">
+    <!-- <section class="error">
       <p class="error-text"></p>
-    </section>
+    </section> -->
 
     <section class="end-game">
       <p class="game-result"></p>
@@ -59,10 +50,6 @@
     <script src="foundation/js/vendor/jquery.js"></script>
     <script src="foundation/js/vendor/foundation.min.js"></script>
     <script src="/app.bundle.js" charset="utf-8"></script>
-
-    <script>
-        $(document).foundation();
-    </script>
 
   </body>
 </html>

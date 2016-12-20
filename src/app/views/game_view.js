@@ -9,7 +9,7 @@ const GameView = Backbone.View.extend({
 
     this.listenTo(this.model, "change", this.render);
 
-    $(".open").attr('chosenIcon', "X");
+    this.$(".open").attr('chosenIcon', "X");
   },
   render: function(){
     console.log("rendering GameView");
@@ -20,15 +20,16 @@ const GameView = Backbone.View.extend({
     'click .close': 'closeCoinFlip'
   },
   setFirstPlayer: function(){
-    $(".coin-flip, .intro").hide();
+    this.$(".coin-flip, .intro").hide();
     console.log("in setFirstPlayer");
     var coinSides = ["HEADS", "TAILS"];
-    $(".flip-result").html(coinSides[Math.floor(Math.random()*2)] + " wins! They are Player One and X. Player Two is O.");
-    $(".result-popup").show();
-    $(".close").show();
+    this.$(".flip-result").html(coinSides[Math.floor(Math.random()*2)] + " wins! They are X and the other is O.");
+    this.$(".result-popup").show();
+    this.$(".close").show();
   },
   closeCoinFlip: function(){
-    $("#welcome").hide();
+    this.$("#welcome").hide();
+    this.$(".board").show();
   },
   updateBoard: function(){
     for (var i = 0; i < this.model.get("board").length; i++) {
@@ -37,11 +38,11 @@ const GameView = Backbone.View.extend({
 
       if (this.model.get("board")[i] == 1) {
         console.log("changing " + i + " to X");
-        $(target).html("X");
+        this.$(target).html("X");
       }
       else if (this.model.get("board")[i] == -1) {
         console.log("changing " + i + " to O");
-        $(target).html("O");
+        this.$(target).html("O");
       }
     }
   },
@@ -78,23 +79,29 @@ const GameView = Backbone.View.extend({
 
     return result;
   },
+  freezeBoard: function(){
+    for (var i = 0; i < this.model.get("board").length; i++) {
+      var target = "#space-" + i;
+      this.$(target).removeClass("open");
+      console.log("removing class from " + target);
+    }
+  },
   makeMove: function(e){
-    //This should fill the spot in the initialized board array, fill the spot on the board (html), remove the .open class (since spot is now taken), and change the .open:hover:after "content" to the next player icon (aka if X turn to O and if O turn to X)
     console.log(e.target);
     var target = e.target.id;
     var location = parseInt(target.charAt(target.length - 1));
     console.log("clicked spot " + location);
 
     //These two errors seem unnecessary?
-    if (location > 8 || location < 0){
-      $(".error").html("This is not a spot on the board.");
-      $(".error").show();
-    }
-    else if (this.model.get("board")[location] !== 0){
-      $(".error").html("This spot is already taken.");
-      $(".error").show();
-    }
-    else {
+    // if (location > 8 || location < 0){
+    //   this.$(".error").html("This is not a spot on the board.");
+    //   this.$(".error").show();
+    // }
+    // else if (this.model.get("board")[location] !== 0){
+    //   this.$(".error").html("This spot is already taken.");
+    //   this.$(".error").show();
+    // }
+    //else {
       this.model.set("totalMoves", this.model.get("totalMoves") + 1);
       console.log("total moves = " + this.model.get("totalMoves"));
       if (this.model.get("totalMoves") % 2 !== 0){
@@ -103,24 +110,25 @@ const GameView = Backbone.View.extend({
         // console.log("see if new board works: " + newBoard);
         this.model.set("board", newBoardX);
         console.log("changed to 1 - board: " + this.model.get("board"));
-        $(".open").attr('chosenIcon', "O");
-      } //When move is odd (Player 1)
+        this.$(".open").attr('chosenIcon', "O");
+      }
       else {
         var newBoardO = this.model.get("board");
         newBoardO[location] = -1;
         this.model.set("board", newBoardO);
         console.log("changed to -1 - board: " + this.model.get("board"));
-        $(".open").attr('chosenIcon', "X");
-      } //When move is even (Player 2)
-    }
+        this.$(".open").attr('chosenIcon', "X");
+      }
+    //}
 
-    $(e.target).removeClass("open");
+    this.$(e.target).removeClass("open");
     this.updateBoard();
 
     var checkEnd = this.checkWinner();
     if (checkEnd !== null){
-      $(".game-result").html(checkEnd);
-      $(".end-game").show();
+      this.freezeBoard();
+      this.$(".game-result").html(checkEnd);
+      this.$(".end-game").show();
     }
   }
 });

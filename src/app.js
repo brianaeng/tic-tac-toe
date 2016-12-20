@@ -4,6 +4,7 @@ import $ from 'jquery';
 import _ from 'underscore';
 import Backbone from 'backbone';
 
+
 $(document).ready(function() {
   var game = new Game({});
 
@@ -13,4 +14,8 @@ $(document).ready(function() {
   });
 
   newGame.render();
+
+  // //might need to import foundation?
+  // var popup = new Foundation.Reveal($('#myModal'));
+  // popup.open();
 });
