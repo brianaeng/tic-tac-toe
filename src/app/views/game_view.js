@@ -77,7 +77,7 @@ const GameView = Backbone.View.extend({
       }
     }
 
-    if (this.model.get("totalMoves") === 9){
+    if (result === null && this.model.get("totalMoves") === 9){
       result =  "draw";
     }
 
@@ -144,7 +144,19 @@ const GameView = Backbone.View.extend({
     var checkEnd = this.checkWinner();
     if (checkEnd !== null){
       this.freezeBoard();
-      this.$(".game-result").html("Result: " + checkEnd);
+
+      var resultText = "";
+      if (checkEnd == "X"){
+        resultText = "Player One won!";
+      }
+      else if (checkEnd == "O"){
+        resultText = "Player Two won!";
+      }
+      else if (checkEnd == "draw") {
+        resultText = "It's a draw!";
+      }
+
+      this.$(".game-result").html(resultText);
       this.$(".end-game").show();
 
       var gameJSON = this.getJSON();
