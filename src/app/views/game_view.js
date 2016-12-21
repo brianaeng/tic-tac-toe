@@ -17,7 +17,11 @@ const GameView = Backbone.View.extend({
   events: {
     'click .open': 'makeMove',
     'click .coin-flip': 'setFirstPlayer',
-    'click .close': 'closeCoinFlip'
+    'click .close': 'closeCoinFlip',
+    'click .new-game': 'reloadPage'
+  },
+  reloadPage: function(){
+    location.reload();
   },
   setFirstPlayer: function(){
     this.$(".coin-flip, .intro").hide();
@@ -66,15 +70,15 @@ const GameView = Backbone.View.extend({
       }, 0);
 
       if (sum === 3) {
-        result = "Player One wins!";
+        result = "X";
       }
       else if (sum === -3) {
-        result = "Player Two wins!";
+        result = "O";
       }
     }
 
     if (this.model.get("totalMoves") === 9){
-      result =  "It's a tie!";
+      result =  "draw";
     }
 
     return result;
@@ -85,6 +89,30 @@ const GameView = Backbone.View.extend({
       this.$(target).removeClass("open");
       console.log("removing class from " + target);
     }
+  },
+  getJSON: function(){
+    var gameWinner = this.checkWinner();
+    var filledBoard = [];
+
+    for (var i = 0; i < this.model.get("board").length; i++){
+      if (this.model.get("board")[i] == 1) {
+        filledBoard.push("X");
+      }
+      else if (this.model.get("board")[i] == -1){
+        filledBoard.push("O");
+      }
+      else if (this.model.get("board")[i] === 0) {
+        filledBoard.push(" ");
+      }
+    }
+
+    var gameJSON = {
+      players: ["X Player", "O Player"],
+      outcome: gameWinner,
+      board: filledBoard
+    };
+
+    return gameJSON;
   },
   makeMove: function(e){
     console.log(e.target);
@@ -116,8 +144,11 @@ const GameView = Backbone.View.extend({
     var checkEnd = this.checkWinner();
     if (checkEnd !== null){
       this.freezeBoard();
-      this.$(".game-result").html(checkEnd);
+      this.$(".game-result").html("Result: " + checkEnd);
       this.$(".end-game").show();
+
+      var gameJSON = this.getJSON();
+      this.model.save(gameJSON);
     }
   }
 });

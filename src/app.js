@@ -8,6 +8,10 @@ import Backbone from 'backbone';
 $(document).ready(function() {
   var game = new Game({});
 
+  // var gamesList = new Games();
+  // gamesList.fetch();
+  console.log(game);
+
   var newGame = new GameView({
     el: $('body'),
     model: game
