@@ -27,9 +27,12 @@ const GameView = Backbone.View.extend({
     this.$(".coin-flip, .intro").hide();
     console.log("in setFirstPlayer");
     var coinSides = ["HEADS", "TAILS"];
-    this.$(".flip-result").html(coinSides[Math.floor(Math.random()*2)] + " wins! They are X and the other is O.");
+    var flipWinner = coinSides[Math.floor(Math.random()*2)];
+    this.$(".flip-result").html(flipWinner + " wins! They are X and the other is O.");
     this.$(".result-popup").show();
     this.$(".close").show();
+
+    return flipWinner;
   },
   closeCoinFlip: function(){
     this.$("#welcome").hide();
