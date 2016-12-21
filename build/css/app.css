@@ -31,11 +31,11 @@ h1 {
   margin: .5rem;
 }
 
-button.coin-flip, button.close {
+button.coin-flip, button.close, button.new-game {
   background-color: rgb(97, 97, 97);
 }
 
-button.coin-flip:hover, button.coin-flip:focus, button.close:hover, button.close:focus {
+button.coin-flip:hover, button.coin-flip:focus, button.new-game:hover, button.new-game:focus, button.close:hover, button.close:focus {
   background-color: rgb(154, 154, 154);
 }
 
