@@ -28,7 +28,7 @@ const GameView = Backbone.View.extend({
     console.log("in setFirstPlayer");
     var coinSides = ["HEADS", "TAILS"];
     var flipWinner = coinSides[Math.floor(Math.random()*2)];
-    this.$(".flip-result").html(flipWinner + " wins! They are X and the other is O.");
+    this.$(".flip-result").text(flipWinner + " wins! They are X and the other is O.");
     this.$(".result-popup").show();
     this.$(".close").show();
 
@@ -45,11 +45,11 @@ const GameView = Backbone.View.extend({
 
       if (this.model.get("board")[i] == 1) {
         console.log("changing " + i + " to X");
-        this.$(target).html("X");
+        this.$(target).text("X");
       }
       else if (this.model.get("board")[i] == -1) {
         console.log("changing " + i + " to O");
-        this.$(target).html("O");
+        this.$(target).text("O");
       }
     }
   },
@@ -159,7 +159,7 @@ const GameView = Backbone.View.extend({
         resultText = "It's a draw!";
       }
 
-      this.$(".game-result").html(resultText);
+      this.$(".game-result").text(resultText);
       this.$(".end-game").show();
 
       var gameJSON = this.getJSON();
