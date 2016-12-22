@@ -2,6 +2,14 @@ import Game from "game";
 
 
 describe('Game', function(){
+  // var view, model;
+  //
+  // beforeEach(function() {
+  //   view = new GameView({model: new Game({})});
+  //
+  //   view.render();
+  // });
+  
   var gameTest = new Game();
 
   it('should initialize a board', function(){

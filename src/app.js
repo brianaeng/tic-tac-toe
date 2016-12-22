@@ -8,8 +8,6 @@ import Backbone from 'backbone';
 $(document).ready(function() {
   var game = new Game({});
 
-  // var gamesList = new Games();
-  // gamesList.fetch();
   console.log(game);
 
   var newGame = new GameView({
@@ -19,7 +17,4 @@ $(document).ready(function() {
 
   newGame.render();
 
-  // //might need to import foundation?
-  // var popup = new Foundation.Reveal($('#myModal'));
-  // popup.open();
 });
