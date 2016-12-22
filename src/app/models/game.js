@@ -10,7 +10,7 @@ const Game = Backbone.Model.extend({
     totalMoves: 0
   },
   initialize: function(options){
-    console.log("Game made");
+    // console.log("Game made");
   }
 });
 

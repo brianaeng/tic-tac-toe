@@ -5,14 +5,14 @@ import _ from 'underscore';
 
 const GameView = Backbone.View.extend({
   initialize: function(){
-    console.log("GameView made");
+    // console.log("GameView made");
 
     this.listenTo(this.model, "change", this.render);
 
     this.$(".open").attr('chosenIcon', "X");
   },
   render: function(){
-    console.log("rendering GameView");
+    // console.log("rendering GameView");
   },
   events: {
     'click .open': 'makeMove',
@@ -25,7 +25,6 @@ const GameView = Backbone.View.extend({
   },
   setFirstPlayer: function(){
     this.$(".coin-flip, .intro").hide();
-    console.log("in setFirstPlayer");
     var coinSides = ["HEADS", "TAILS"];
     var flipWinner = coinSides[Math.floor(Math.random()*2)];
     this.$(".flip-result").text(flipWinner + " wins! They are X and the other is O.");
@@ -41,14 +40,13 @@ const GameView = Backbone.View.extend({
   updateBoard: function(){
     for (var i = 0; i < this.model.get("board").length; i++) {
       var target = "#space-" + i;
-      console.log(target);
 
       if (this.model.get("board")[i] == 1) {
-        console.log("changing " + i + " to X");
+        // console.log("changing " + i + " to X");
         this.$(target).text("X");
       }
       else if (this.model.get("board")[i] == -1) {
-        console.log("changing " + i + " to O");
+        // console.log("changing " + i + " to O");
         this.$(target).text("O");
       }
     }
@@ -90,7 +88,7 @@ const GameView = Backbone.View.extend({
     for (var i = 0; i < this.model.get("board").length; i++) {
       var target = "#space-" + i;
       this.$(target).removeClass("open");
-      console.log("removing class from " + target);
+      // console.log("removing class from " + target);
     }
   },
   getJSON: function(){
@@ -118,26 +116,24 @@ const GameView = Backbone.View.extend({
     return gameJSON;
   },
   makeMove: function(e){
-    console.log(e.target);
     var target = e.target.id;
     var location = parseInt(target.charAt(target.length - 1));
-    console.log("clicked spot " + location);
+    // console.log("clicked spot " + location);
 
     this.model.set("totalMoves", this.model.get("totalMoves") + 1);
-    console.log("total moves = " + this.model.get("totalMoves"));
     if (this.model.get("totalMoves") % 2 !== 0){
       var newBoardX = this.model.get("board");
       newBoardX[location] = 1;
       // console.log("see if new board works: " + newBoard);
       this.model.set("board", newBoardX);
-      console.log("changed to 1 - board: " + this.model.get("board"));
+      // console.log("changed to 1 - board: " + this.model.get("board"));
       this.$(".open").attr('chosenIcon', "O");
     }
     else {
       var newBoardO = this.model.get("board");
       newBoardO[location] = -1;
       this.model.set("board", newBoardO);
-      console.log("changed to -1 - board: " + this.model.get("board"));
+      // console.log("changed to -1 - board: " + this.model.get("board"));
       this.$(".open").attr('chosenIcon', "X");
     }
 
